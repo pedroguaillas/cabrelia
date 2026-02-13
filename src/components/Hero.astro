@@ -1,0 +1,30 @@
+---
+import { Image } from "astro:assets";
+import hero from "../assets/hero.avif";
+---
+
+<section class="flex flex-col md:flex-row items-center container mx-auto min-h-[80vh] gap-8">
+  <div class="w-full md:w-1/2 flex flex-col items-center justify-center text-center px-8 py-12">
+    <h1 class="text-indigo-950 text-5xl lg:text-[5.5rem] font-serif italic opacity-90 tracking-tighter leading-none whitespace-nowrap animate-fade-up-load" style="animation-delay: 0.2s;">
+      Collection F
+    </h1>
+    <p class="text-indigo-950 text-xs tracking-[0.3em] uppercase mt-6 opacity-80 animate-fade-up-load" style="animation-delay: 0.5s;">
+      Siempre cómodos
+    </p>
+
+    <a href="/catalogo" class="mt-10 px-10 py-3 rounded-full border border-indigo-950 text-indigo-950 text-[10px] font-bold uppercase tracking-widest hover:bg-indigo-950 hover:text-white hover:scale-105 active:scale-95 transition-all duration-300 animate-fade-up-load" style="animation-delay: 0.7s;">
+      Comprar aquí
+    </a>
+  </div>
+
+  <div class="w-full md:w-1/2 h-full animate-fade-up-load" style="animation-delay: 0.4s;">
+    <Image
+      src={hero}
+      width={960}
+      height={1200}
+      alt="Cabrelia Collection"
+      class="w-full h-[60vh] md:h-[80vh] object-cover rounded-sm shadow-sm hover:shadow-xl transition-shadow duration-500"
+      loading="eager"
+    />
+  </div>
+</section>

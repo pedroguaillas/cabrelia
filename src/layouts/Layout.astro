@@ -1,0 +1,54 @@
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Cabrelia — Siempre Cómodos</title>
+    <meta name="description" content="Cabrelia — Moda esencial, siempre cómodos. Descubre nuestra colección de prendas y accesorios." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,400&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-white text-cabrelia-black font-sans antialiased overflow-x-hidden">
+    <slot />
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("revealed");
+
+              // If parent has data-stagger, also reveal children
+              if (entry.target.hasAttribute("data-stagger")) {
+                entry.target.querySelectorAll("[data-reveal]").forEach((child) => {
+                  child.classList.add("revealed");
+                });
+              }
+
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.15 }
+      );
+
+      document.querySelectorAll("[data-reveal]").forEach((el) => {
+        // Only observe top-level [data-reveal], not children inside [data-stagger]
+        if (!el.parentElement?.hasAttribute("data-stagger")) {
+          observer.observe(el);
+        }
+      });
+
+      // Observe stagger containers
+      document.querySelectorAll("[data-stagger]").forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+---
+const items = [
+  "Envío gratis en pedidos +$999",
+  "Nueva Colección Disponible",
+  "Calidad Premium",
+  "Hecho con Pasión",
+  "Siempre Cómodos",
+  "Estilo Atemporal",
+];
+---
+
+<div class="bg-indigo-950 py-3 overflow-hidden">
+  <div class="marquee-track flex whitespace-nowrap">
+    {[...items, ...items].map((item) => (
+      <span class="mx-8 text-white/90 text-[11px] font-sans tracking-[0.25em] uppercase inline-flex items-center gap-8">
+        {item}
+        <span class="text-white/30">&#9670;</span>
+      </span>
+    ))}
+  </div>
+</div>
+
+<style>
+  .marquee-track {
+    animation: marquee 25s linear infinite;
+    width: max-content;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import essential2 from "../assets/essential2.jpg";
+---
+
+<section id="nosotros" class="container mx-auto py-20 px-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <div class="order-2 md:order-1" data-reveal="slide-left">
+      <Image
+        src={essential2}
+        width={800}
+        height={1000}
+        alt="Cabrelia — Nuestra Historia"
+        class="w-full h-[60vh] object-cover rounded-2xl hover:shadow-2xl transition-shadow duration-500"
+      />
+    </div>
+
+    <div class="order-1 md:order-2 flex flex-col justify-center" data-reveal="slide-right">
+      <p class="text-[11px] tracking-[0.3em] uppercase text-cabrelia-muted mb-3">Nuestra Historia</p>
+      <h2 class="text-5xl md:text-6xl font-serif italic text-indigo-950 opacity-90 tracking-tighter leading-none mb-8">
+        Sobre Cabrelia
+      </h2>
+
+      <p class="text-cabrelia-muted leading-relaxed mb-6">
+        Nacimos con una idea simple: crear prendas que se sientan tan bien como se ven.
+        Cada pieza de nuestra colección está diseñada para acompañarte en tu día a día,
+        combinando materiales de primera calidad con un diseño atemporal.
+      </p>
+
+      <p class="text-cabrelia-muted leading-relaxed mb-10">
+        Creemos que la moda no tiene que sacrificar comodidad. Por eso, cada detalle
+        — desde las costuras hasta las telas — está pensado para que te sientas
+        seguro y cómodo sin importar la ocasión.
+      </p>
+
+      <div class="flex gap-12">
+        <div>
+          <p class="text-3xl font-serif italic text-indigo-950">+2k</p>
+          <p class="text-[10px] tracking-[0.2em] uppercase text-cabrelia-muted mt-1">Clientes felices</p>
+        </div>
+        <div>
+          <p class="text-3xl font-serif italic text-indigo-950">100%</p>
+          <p class="text-[10px] tracking-[0.2em] uppercase text-cabrelia-muted mt-1">Calidad premium</p>
+        </div>
+        <div>
+          <p class="text-3xl font-serif italic text-indigo-950">24h</p>
+          <p class="text-[10px] tracking-[0.2em] uppercase text-cabrelia-muted mt-1">Envío express</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
