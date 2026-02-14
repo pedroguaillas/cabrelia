@@ -1,22 +1,83 @@
-<header class="flex justify-between container mx-auto py-12 animate-fade-down">
-  <div>
-    <nav>
+<header class="container mx-auto px-6 py-8 md:py-12 animate-fade-down">
+  <div class="flex items-center justify-between">
+    <!-- Logo -->
+    <div class="flex items-center gap-3">
+      <div class="hidden md:flex items-center gap-0.5">
+        <span class="w-1.5 h-1.5 bg-indigo-950 rounded-full"></span>
+        <span class="w-1.5 h-1.5 bg-indigo-950 rounded-full"></span>
+        <span class="w-1.5 h-1.5 bg-indigo-950 rounded-full"></span>
+        <span class="w-1.5 h-1.5 bg-indigo-950 rounded-full"></span>
+      </div>
+      <a href="/" class="text-2xl md:text-4xl font-bold text-indigo-950 font-inter">
+        Cabrelia
+      </a>
+    </div>
+
+    <!-- Desktop nav -->
+    <nav class="hidden md:block">
       <ul class="flex space-x-4">
-        <li><a class="px-4 py-1 rounded-2xl border text-indigo-950 border-indigo-950 font-semibold hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#mas-vendidos">CATÁLOGO</a></li>
-        <li><a class="px-4 py-1 rounded-2xl border text-indigo-950 border-indigo-950 font-semibold hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#contacto">CONTACTO</a></li>
-        <li><a class="px-4 py-1 rounded-2xl border text-indigo-950 border-indigo-950 font-semibold hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#nosotros">NOSOTROS</a></li>
+        <li><a class="px-4 py-1 rounded-2xl border text-indigo-950 border-indigo-950 text-sm font-semibold hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#mas-vendidos">CATÁLOGO</a></li>
+        <li><a class="px-4 py-1 rounded-2xl border text-indigo-950 border-indigo-950 text-sm font-semibold hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#contacto">CONTACTO</a></li>
+        <li><a class="px-4 py-1 rounded-2xl border text-indigo-950 border-indigo-950 text-sm font-semibold hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#nosotros">NOSOTROS</a></li>
       </ul>
     </nav>
+
+    <!-- Mobile menu button -->
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5"
+      aria-label="Abrir menú"
+    >
+      <span class="block w-6 h-0.5 bg-indigo-950 transition-all duration-300" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-indigo-950 transition-all duration-300" id="bar2"></span>
+      <span class="block w-4 h-0.5 bg-indigo-950 transition-all duration-300 self-end" id="bar3"></span>
+    </button>
   </div>
-  <div class="flex justify-between">
-    <div class="text-center font-bold w-2xl">
-      <span class="w-full bg-indigo-950 rounded">.</span>
-      <span class="w-full bg-indigo-950 rounded">.</span>
-      <span class="w-full bg-indigo-950 rounded">.</span>
-      <span class="w-full bg-indigo-950 rounded">.</span>
-    </div>
-    <div class="text-4xl font-bold text-indigo-950 font-inter">
-        Cabrelia
-    </div>
-  </div>
+
+  <!-- Mobile nav -->
+  <nav id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+    <ul class="flex flex-col gap-3 pt-6 pb-2">
+      <li><a class="block px-4 py-2.5 rounded-2xl border text-indigo-950 border-indigo-950 text-sm font-semibold text-center hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#mas-vendidos">CATÁLOGO</a></li>
+      <li><a class="block px-4 py-2.5 rounded-2xl border text-indigo-950 border-indigo-950 text-sm font-semibold text-center hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#contacto">CONTACTO</a></li>
+      <li><a class="block px-4 py-2.5 rounded-2xl border text-indigo-950 border-indigo-950 text-sm font-semibold text-center hover:bg-indigo-950 hover:text-white transition-all duration-300" href="#nosotros">NOSOTROS</a></li>
+    </ul>
+  </nav>
 </header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let open = false;
+
+  btn?.addEventListener('click', () => {
+    open = !open;
+    if (open) {
+      menu!.style.maxHeight = menu!.scrollHeight + 'px';
+      bar1!.style.transform = 'rotate(45deg) translate(3.5px, 3.5px)';
+      bar2!.style.opacity = '0';
+      bar3!.style.transform = 'rotate(-45deg) translate(3px, -3px)';
+      bar3!.style.width = '1.5rem';
+    } else {
+      menu!.style.maxHeight = '0';
+      bar1!.style.transform = '';
+      bar2!.style.opacity = '1';
+      bar3!.style.transform = '';
+      bar3!.style.width = '1rem';
+    }
+  });
+
+  // Close menu when a link is clicked
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      open = false;
+      menu!.style.maxHeight = '0';
+      bar1!.style.transform = '';
+      bar2!.style.opacity = '1';
+      bar3!.style.transform = '';
+      bar3!.style.width = '1rem';
+    });
+  });
+</script>
